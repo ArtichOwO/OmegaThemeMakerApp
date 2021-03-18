@@ -1,34 +1,38 @@
 var Module = null;
 var Theme = {};
 
-function getJSONValue() {
-    var file = document.getElementById("importButton").files[0];
-    var textType = /json.*/;
+function saveJSON() {
+    let content = document.getElementById("JSONEditor").value;
+    let theme = JSON.parse(document.getElementById("JSONEditor").value);
+    let fileName = theme.icons + ".json";
 
-    /*var reader = new FileReader();
-        
-    reader.onload = function(e) {
-        var content = reader.result;
-        console.log(content)
-        document.getElementById("theme").value = content;
-    }
-    
-    reader.readAsText(file); */
+    let blob = new Blob([content], { type: 'text/json' });
+    let a = document.createElement('a');
+    a.download = fileName;
+    a.href = URL.createObjectURL(blob);
+    a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
-    console.log(file.type)
+function importJSON() {
+    let file = document.getElementById("importButton").files[0];
+    let textType = /json.*/;
     
     if (file.type.match(textType)) {
-        var reader = new FileReader();
+        let reader = new FileReader();
         
         reader.onload = function(e) {
-            var content = reader.result;
-            console.log(content)
-            document.getElementById("theme").value = content;
+            let content = reader.result;
+            document.getElementById("JSONEditor").value = content;
         }
         
         reader.readAsText(file);    
     } else {
         setStatus("File not supported!")
+        return false;
     }
 }
 
@@ -66,7 +70,7 @@ function setStatus(val) {
 }
 
 function loadTheme() {
-    let content = document.getElementById("theme").value;
+    let content = document.getElementById("JSONEditor").value;
 
     try {
         let data = JSON.parse(content);
