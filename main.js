@@ -1,6 +1,9 @@
+'use strict';
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, dialog} = require('electron')
 const path = require('path')
+const DiscordRPC = require('discord-rpc');
+const url = require('url');
 
 function createWindow () {
   // Create the browser window.
@@ -43,4 +46,34 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+const clientId = '821803171844194366';
+const rpc = new DiscordRPC.Client({ transport: 'ipc' });
+const startTimestamp = new Date();
 
+async function setActivity() {
+  //jla tente
+  //if (!rpc || !mainWindow) {
+    //return;
+  //}
+
+  rpc.setActivity({
+    details: "editing a theme",
+    //state: 'ca sert à quoi ce truc?',
+    startTimestamp,
+    largeImageKey: 'icon',
+    largeImageText: 'create your own theme for your calculator!',
+    smallImageKey: 'app-json-icon',
+    smallImageText: 'editing the json file',
+    instance: false,
+  });
+}
+
+rpc.on('ready', () => {
+  setActivity();
+
+  setInterval(() => {
+    setActivity();
+  }, 15e3);
+});
+
+rpc.login({ clientId }).catch(console.error);
