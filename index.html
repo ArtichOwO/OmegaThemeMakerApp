@@ -183,7 +183,8 @@
         </div>
 
         <div id="toolBox" class="grayContainer">
-          <input type="color" id="colorPicker" value="#c03535">
+          <input type="color" id="colorPicker" value="#c03535" onchange="updateColorValue()">
+          <span>Value = <span id="colorPickerValue">#c03535</span></span>
           <hr>
           <span id="status">Not running</span>
         </div>

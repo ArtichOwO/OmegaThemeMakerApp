@@ -1,6 +1,11 @@
 var Module = null;
 var Theme = {};
 
+function updateColorValue() {
+    let value = document.getElementById("colorPicker").value;
+    document.getElementById("colorPickerValue").innerHTML = value;
+}
+
 function saveJSON() {
     let content = document.getElementById("JSONEditor").value;
     let theme = JSON.parse(document.getElementById("JSONEditor").value);
