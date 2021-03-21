@@ -8,7 +8,11 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+
+    "pack:osx": "electron-packager . $npm_package_productName --out=dist/osx --platform=darwin --arch=x64 --icon=img/icon.icns",
+    "pack:win64": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=x64 --icon=img/icon.ico",
+    "build": "npm run pack:osx && npm run pack:win64"
   },
   "repository": "https://github.com/M4xi1m3/Omega-ThMkr",
   "keywords": [
@@ -29,33 +33,5 @@
     "discord-rpc": "^3.2.0",
     "electron-squirrel-startup": "^1.0.0"
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "img/icon.icns"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "OmegaThemeMaker"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
-  }
+  "config": {}
 }

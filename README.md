@@ -8,7 +8,8 @@ $ cd OmegaThemeMakerApp
 $ npm install
 $ npm start # for "live" testing
 # or
-$ npm run make # for binaries
+$ npm run build # for all binaries
+$ npm run pack:osx # or pack:win64
 ```
 ## How do I use it ?
 On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change
