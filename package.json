@@ -1,7 +1,7 @@
 {
   "name": "omega-thmkr",
   "productName": "Omega Theme Maker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A theme maker",
   "main": "main.js",
   "icon": "img/icon.png",
@@ -9,7 +9,6 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-
     "pack:osx": "electron-packager . $npm_package_productName --out=dist/osx --platform=darwin --arch=x64 --icon=img/icon.icns",
     "pack:win64": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=x64 --icon=img/icon.ico",
     "build": "npm run pack:osx && npm run pack:win64"
@@ -19,15 +18,11 @@
     "Omega",
     "Theme"
   ],
-  "author": "M4xi1m3, ArtichautCosmique",
+  "author": "M4xi1m3, ArtichautCosmique and 579",
   "license": "¯\\_(ツ)_/¯",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^12.0.0"
+    "electron": "^12.0.0",
+    "electron-packager": "^8.1.0"
   },
   "dependencies": {
     "discord-rpc": "^3.2.0",
