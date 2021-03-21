@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
+    <div id="contextMenu" class="contextMenu--inactive">
+
+      <input type="color" id="contextmenuColorPicker" class="colorPicker" value="#c03535">
+      <hr>
+      <button onclick="copySelected()">Copy</button>
+      <button onclick="cutSelected()">Cut</button>
+      <button onclick="pasteSelected()">Paste</button>
+
+    </div>
+
+
     <div id="mainContainer">
       <div id="JSONEditorContainer" class="grayContainer">
         <textarea id="JSONEditor" name="theme">
@@ -183,7 +194,7 @@
         </div>
 
         <div id="toolBox" class="grayContainer">
-          <input type="color" id="colorPicker" value="#c03535" onchange="updateColorValue()">
+          <input type="color" id="toolboxColorPicker" class="colorPicker" value="#c03535" onchange="updateColorValue()">
           <span>Value = <span id="colorPickerValue">#c03535</span></span>
           <hr>
           <span id="status">Not running</span>

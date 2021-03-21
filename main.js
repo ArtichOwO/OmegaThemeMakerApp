@@ -58,7 +58,7 @@ async function setActivity() {
 
   rpc.setActivity({
     details: "Editing a theme",
-    //state: 'ca sert à quoi ce truc?',
+    //state: 'ça sert à quoi ce truc ?',
     startTimestamp,
     largeImageKey: 'icon',
     largeImageText: 'Create your own theme for your calculator!',
