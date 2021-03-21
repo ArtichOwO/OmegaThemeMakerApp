@@ -1,10 +1,11 @@
 var Module = null;
 var Theme = {};
-var modal = document.getElementById('contextMenu');
 var selectionOffsets = [];
 
+var modal = document.getElementById('contextMenu');
+var textarea = document.getElementById("JSONEditor");
+
 function changeSelectedColor() {
-    let textarea = document.getElementById("JSONEditor");
     let value = document.getElementById("contextmenuColorPicker").value;
     let content = textarea.value;
     content = content.slice(0, selectionOffsets[0]) + value.slice(1) + content.slice(selectionOffsets[1]);
@@ -21,20 +22,18 @@ function copySelected() {
 function cutSelected() {
     let name = window.getSelection().toString();
     document.execCommand("copy");
-    let textarea = document.getElementById("JSONEditor");
     let text = textarea.value;
-    text = text.slice(0, textarea.selectionStart) + text.slice(textarea.selectionEnd);
+    text = text.slice(0, selectionOffsets[0]) + text.slice(selectionOffsets[1]);
     textarea.value = text;
 
     modal.className = "contextMenu--inactive";
 }
 
 function pasteSelected() {
-    let textarea = document.getElementById("JSONEditor");
     let content = textarea.value;
     navigator.clipboard.readText()
         .then(text => {
-            content = content.slice(0, textarea.selectionStart) + text + content.slice(textarea.selectionEnd);
+            content = content.slice(0, selectionOffsets[0]) + text + content.slice(selectionOffsets[1]);
             textarea.value = content;
         })
         .catch(err => {
@@ -50,7 +49,6 @@ document.addEventListener('contextmenu', function(e) {
         modal.style.left = event.clientX + "px";
         modal.style.top = event.clientY + "px";
         text = window.getSelection().toString();
-        let textarea = document.getElementById("JSONEditor");
         selectionOffsets = [textarea.selectionStart, textarea.selectionEnd];
         if (text[0] == "#") {
             document.getElementById("contextmenuColorPicker").value = text;
