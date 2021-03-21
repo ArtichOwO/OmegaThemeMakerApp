@@ -58,16 +58,14 @@ async function setActivity() {
 
   rpc.setActivity({
     details: "Editing a theme",
-    //state: 'ça sert à quoi ce truc ?',
     startTimestamp,
-    largeImageKey: 'icon',
-    largeImageText: 'Create your own theme for your calculator!',
-    smallImageKey: 'app-json-icon',
-    smallImageText: 'Editing the json file',
+    largeImageKey: 'app-json-icon',
+    largeImageText: 'Editing the json file',
+    smallImageKey: 'icon',
+    smallImageText: 'Create your own theme for your calculator!',
     instance: false,
   });
 }
-
 rpc.on('ready', () => {
   setActivity();
 
