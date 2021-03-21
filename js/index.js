@@ -6,10 +6,13 @@ var modal = document.getElementById('contextMenu');
 var textarea = document.getElementById("JSONEditor");
 
 function changeSelectedColor() {
-    let value = document.getElementById("contextmenuColorPicker").value;
     let content = textarea.value;
-    content = content.slice(0, selectionOffsets[0]) + value.slice(1) + content.slice(selectionOffsets[1]);
-    textarea.value = content;
+    let selectedText = content.slice(selectionOffsets[0], selectionOffsets[1]);
+    if (selectedText.length > 0 ) {
+        let value = document.getElementById("contextmenuColorPicker").value;
+        content = content.slice(0, selectionOffsets[0]) + value.slice(1) + content.slice(selectionOffsets[1]);
+        textarea.value = content;
+    }
 }
 
 function copySelected() {
