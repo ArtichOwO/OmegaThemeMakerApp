@@ -1,6 +1,15 @@
 var Module = null;
 var Theme = {};
 var modal = document.getElementById('contextMenu');
+var selectionOffsets = [];
+
+function changeSelectedColor() {
+    let textarea = document.getElementById("JSONEditor");
+    let value = document.getElementById("contextmenuColorPicker").value;
+    let content = textarea.value;
+    content = content.slice(0, selectionOffsets[0]) + value.slice(1) + content.slice(selectionOffsets[1]);
+    textarea.value = content;
+}
 
 function copySelected() {
     let name = window.getSelection().toString();
@@ -41,6 +50,8 @@ document.addEventListener('contextmenu', function(e) {
         modal.style.left = event.clientX + "px";
         modal.style.top = event.clientY + "px";
         text = window.getSelection().toString();
+        let textarea = document.getElementById("JSONEditor");
+        selectionOffsets = [textarea.selectionStart, textarea.selectionEnd];
         if (text[0] == "#") {
             document.getElementById("contextmenuColorPicker").value = text;
         } else {
@@ -52,6 +63,11 @@ document.addEventListener('contextmenu', function(e) {
 });
 window.onclick = function(event) {
     if (event.path.indexOf(document.getElementById('contextMenu')) == -1) {
+        modal.className = "contextMenu--inactive";
+    }
+}
+window.onkeyup = function(e) {
+    if ( e.keyCode === 27 ) {
         modal.className = "contextMenu--inactive";
     }
 }
