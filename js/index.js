@@ -5,6 +5,15 @@ var selectionOffsets = [];
 var modal = document.getElementById('contextMenu');
 var textarea = document.getElementById("JSONEditor");
 
+function screenshot() {
+  Module._IonDisplayForceRefresh();
+  var canvas = document.getElementById('canvas');
+  var link = document.createElement('a');
+  link.download = 'screenshot.png';
+  link.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+  link.click();
+}
+
 function changeSelectedColor() {
     let content = textarea.value;
     let selectedText = content.slice(selectionOffsets[0], selectionOffsets[1]);
