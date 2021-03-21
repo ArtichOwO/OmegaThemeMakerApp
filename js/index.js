@@ -1,8 +1,63 @@
 var Module = null;
 var Theme = {};
+var modal = document.getElementById('contextMenu');
+
+function copySelected() {
+    let name = window.getSelection().toString();
+    document.execCommand("copy");
+
+    modal.className = "contextMenu--inactive";
+}
+
+function cutSelected() {
+    let name = window.getSelection().toString();
+    document.execCommand("copy");
+    let textarea = document.getElementById("JSONEditor");
+    let text = textarea.value;
+    text = text.slice(0, textarea.selectionStart) + text.slice(textarea.selectionEnd);
+    textarea.value = text;
+
+    modal.className = "contextMenu--inactive";
+}
+
+function pasteSelected() {
+    let textarea = document.getElementById("JSONEditor");
+    let content = textarea.value;
+    navigator.clipboard.readText()
+        .then(text => {
+            content = content.slice(0, textarea.selectionStart) + text + content.slice(textarea.selectionEnd);
+            textarea.value = content;
+        })
+        .catch(err => {
+            console.error('Failed to read clipboard contents: ', err);
+        });
+
+    modal.className = "contextMenu--inactive";
+}
+
+document.addEventListener('contextmenu', function(e) {
+    if (modal.className == "contextMenu--inactive") {
+        modal.className = "contextMenu--active";
+        modal.style.left = event.clientX + "px";
+        modal.style.top = event.clientY + "px";
+        text = window.getSelection().toString();
+        if (text[0] == "#") {
+            document.getElementById("contextmenuColorPicker").value = text;
+        } else {
+            document.getElementById("contextmenuColorPicker").value = "#" + text;
+        }
+    } else {
+        modal.className = "contextMenu--inactive";
+    }
+});
+window.onclick = function(event) {
+    if (event.path.indexOf(document.getElementById('contextMenu')) == -1) {
+        modal.className = "contextMenu--inactive";
+    }
+}
 
 function updateColorValue() {
-    let value = document.getElementById("colorPicker").value;
+    let value = document.getElementById("toolboxColorPicker").value;
     document.getElementById("colorPickerValue").innerHTML = value;
 }
 

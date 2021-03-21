@@ -58,7 +58,6 @@ async function setActivity() {
 
   rpc.setActivity({
     details: "Editing a theme",
-    //state: "...",
     startTimestamp,
     largeImageKey: 'app-json-icon',
     largeImageText: 'Editing the json file',
