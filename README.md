@@ -6,6 +6,7 @@ Build:
 $ git clone https://github.com/ArtichOwO/OmegaThemeMakerApp
 $ cd OmegaThemeMakerApp
 $ npm install
+$ npm install discord-rpc
 $ npm start # for "live" testing
 # or
 $ npm run build # for all binaries
