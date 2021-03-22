@@ -11,10 +11,13 @@ $ npm start # for "live" testing
 $ npm run build # for all binaries
 $ npm run pack:osx # or pack:win64
 ```
-## How do I use it ?
+# How do I use it ?
 On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change
 the hexadecimal values in order to change the color of the different elements of the interface.  
   
 + If you want to see how the colors fits in, simply press the "play" button to launch the simulator.  
 + The "file" icon next to the play button will allow you to load a work that you may have previously saved using the "floppy-disk" button.  
 + The right click is fully functionnal and will provide you with a full context menu that allows you to change a color without having to know by heart its hexadecimal value.
+
+# Licence
+epsilon.js provided under CC-BY-SA-NC. The rest of the repo is CC0.
