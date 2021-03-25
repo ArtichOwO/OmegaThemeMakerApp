@@ -177,7 +177,6 @@ function run() {
     }
     
     if (loadTheme()) {
-        console.log(Theme);
         var mainCanvas = document.getElementById('canvas');
         var epsilonLanguage = document.documentElement.lang || window.navigator.language.split('-')[0];
         Module = {
@@ -197,4 +196,12 @@ function run() {
         }
         Epsilon(Module);
     }
+}
+
+function varKey() {
+    Module._IonSimulatorKeyboardKeyDown(15);
+}
+
+function toolKey() {
+    Module._IonSimulatorKeyboardKeyDown(16);
 }
