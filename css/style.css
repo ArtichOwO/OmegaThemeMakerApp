@@ -48,7 +48,7 @@
     cursor: pointer;
 }
 
-#canvas {
+canvas#canvas {
     width: 320px;
     height: 240px;
     background-color: white;
@@ -101,4 +101,31 @@ html, body {
     height: 100%;
     background-color: #252526;
     font-family: 'Fira Sans', sans-serif;
+}
+button,canvas{
+    border-radius: 15px;
+}
+
+/*full screen*/
+#popUpBox{
+        width: 1000px;
+        height: 700px;
+        overflow: hidden;
+        background-color: #333333;
+        box-shadow: 0 0 10px black;
+        border-radius: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        padding: 10px;
+        display: none;
+        text-align:center;
+      }
+canvas#canvas2{
+    width:150%;
+    height:150%;
+    display:center;
+    justify-content:center;
 }
