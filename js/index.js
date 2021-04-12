@@ -4,6 +4,7 @@ var selectionOffsets = [];
 
 var modal = document.getElementById('contextMenu');
 var textarea = document.getElementById("JSONEditor");
+var mainCanvas = undefined;
 
 function screenshot() {
   Module._IonDisplayForceRefresh();
@@ -167,6 +168,26 @@ function loadTheme() {
     }
 }
 
+function openpop(){
+    window.a = 1;
+}
+function closepop(){
+    window.a = 0;
+}
+var Alert = new CustomAlert();
+      function CustomAlert(){
+        this.render = function(){
+          //Show Modal
+          let popUpBox = document.getElementById('popUpBox');
+          popUpBox.style.display = "block";
+          //Close Modal
+          document.getElementById('closeModal').innerHTML = '<button onclick="Alert.ok();closepop()">close</button>';
+        }
+        this.ok = function(){
+          document.getElementById('popUpBox').style.display = "none";
+          document.getElementById('popUpOverlay').style.display = "none";
+        }
+      }
 function run() {
     setStatus("Running...")
 
@@ -177,7 +198,8 @@ function run() {
     }
     
     if (loadTheme()) {
-        var mainCanvas = document.getElementById('canvas');
+        if (window.a==1){ mainCanvas = document.getElementById('canvas2');}
+        else{ mainCanvas = document.getElementById('canvas');}
         var epsilonLanguage = document.documentElement.lang || window.navigator.language.split('-')[0];
         Module = {
             canvas: mainCanvas,

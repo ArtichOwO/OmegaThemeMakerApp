@@ -188,13 +188,23 @@
           <input type="file" name="Import" id="importButton" onchange="importJSON()">
           <img src="img/savebutton.png" alt="Save" id="saveButton" onclick="saveJSON()">
           <img src="img/screenshotbutton.png" alt="ScrnShot" onclick="screenshot()">
+          <div id="popUpOverlay"></div>
+            <div id="popUpBox">
+              <div id="box">
+                <img src="img/launchbutton.png" alt="toolBar" onclick="run()" id="runButton2">
+                <canvas id="canvas2" width="620" height="240"oncontextmenu="event.preventDefault()"></canvas>
+                <div id="closeModal"></div>
+                </div>
+              </div>
+          <img src="img/screenshotbutton.png" alt="ScrnShot" onclick="Alert.render();openpop()">
         </div>
+          
 
         <div id="canvasContainer" class="grayContainer">
-          <canvas id="canvas" width="320" height="240" oncontextmenu="event.preventDefault()"></canvas>
+          <canvas id="canvas" width="640" height="480" oncontextmenu="event.preventDefault()"></canvas>
           <div>
-            <button onclick="varKey()">Var</button>
-            <button onclick="toolKey()">Tool</button>
+            <button id='var'onclick="varKey()">Var</button>
+            <button id='tool'onclick="toolKey()">Tool</button>
           </div>
         </div>
 
@@ -206,7 +216,6 @@
         </div>
       </div>
     </div>
-
     <script src="./js/epsilon.js"></script>
     <script src="./js/index.js"></script>
     <script src="./renderer.js"></script>
