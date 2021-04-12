@@ -4,7 +4,10 @@ module.exports = {
       nodeIntegration: true,
       preload: './src/preload.js',
       builderOptions: {
-        // options placed here will be merged with default configuration and passed to electron-builder
+		    mac: {
+		      category: "public.app-category.graphics-design",
+		      target: "mas",
+		    }
       }
     },
   },

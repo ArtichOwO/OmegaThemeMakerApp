@@ -3,10 +3,8 @@
   "productName": "Omega Theme Maker",
   "version": "1.2.0",
   "private": true,
+  "author": "Omega-Numworks",
   "description": "A theme maker for the NumWorks Calculator",
-  "mac": {
-    "category": "public.app-category.graphics-design"
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
