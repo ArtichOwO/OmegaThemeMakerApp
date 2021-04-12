@@ -5,20 +5,20 @@ Build:
 ```bash
 $ git clone https://github.com/ArtichOwO/OmegaThemeMakerApp
 $ cd OmegaThemeMakerApp
-$ npm install
-$ npm install discord-rpc
-$ npm start # for "live" testing
-# or
-$ npm run build # for all binaries
-$ npm run pack:osx # or pack:win64
+$ yarn install
+$ yarn electron:serve # For "live" testing
+$ yarn electron:build # To build binaries
+# yarn serve not working atm
 ```
 # How do I use it ?
-On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change
-the hexadecimal values in order to change the color of the different elements of the interface.  
+On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change  
+the color values in order to change the color of the different elements of the interface.  
+You can also edit the JSON version of the theme, simply click on `JSON Editor`.
   
 + If you want to see how the colors fits in, simply press the "play" button to launch the simulator.  
-+ The "file" icon next to the play button will allow you to load a work that you may have previously saved using the "floppy-disk" button.  
-+ The right click is fully functionnal and will provide you with a full context menu that allows you to change a color without having to know by heart its hexadecimal value.
++ The "import" icon next to the play button will allow you to load a work that you may have previously saved using the "floppy-disk" button.  
++ With the "screenshot" button, you can, well, take a screenshot
++ The "fullscreen" icon will allows you to make the screen bigger
 
 # Licence
 epsilon.js provided under CC-BY-SA-NC. The rest of the repo is CC0.
