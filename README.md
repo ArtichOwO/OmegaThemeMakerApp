@@ -1,4 +1,4 @@
-# Omega Theme Maker Desktop
+# Omega Theme Maker App
 [M4x1m3](https://github.com/M4xi1m3)'s [theme maker](https://github.com/M4xi1m3/Omega-ThMkr), but for desktop!
 
 Build:
@@ -10,6 +10,12 @@ $ yarn electron:serve # For "live" testing
 $ yarn electron:build # To build binaries
 # yarn serve not working atm
 ```
+To cross compile, add a [platform argument](https://www.electron.build/cli)
+```bash
+# Example
+$ yarn electron:build --macos
+```
+
 # How do I use it ?
 On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change  
 the color values in order to change the color of the different elements of the interface.  
@@ -21,4 +27,4 @@ You can also edit the JSON version of the theme, simply click on `JSON Editor`.
 + The "fullscreen" icon will allows you to make the screen bigger
 
 # Licence
-epsilon.js provided under CC-BY-SA-NC. The rest of the repo is CC0.
+[epsilon.js](#) provided under CC-BY-SA-NC. The rest of the repo is CC0.
