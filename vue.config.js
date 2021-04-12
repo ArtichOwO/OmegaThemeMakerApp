@@ -5,8 +5,7 @@ module.exports = {
       preload: './src/preload.js',
       builderOptions: {
 		    mac: {
-		      category: "public.app-category.graphics-design",
-		      target: "mas",
+		      category: "public.app-category.graphics-design"
 		    }
       }
     },
