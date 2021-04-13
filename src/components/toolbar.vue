@@ -27,11 +27,6 @@
         this.$store.getters.runSimulator
 			},
 
-      setStatus(val) {
-          console.log(val)
-          this.$store.state.status = val
-      },
-
       importFile() {
         let file = document.getElementById("importButton").files[0]
         let textType = /json.*/
@@ -42,11 +37,12 @@
             reader.onload = function(e) {
                 let content = reader.result
                 _this.$store.state.theme = JSON.parse(content)
+                _this.$store.commit("addLnToStatus", "Imported " + _this.$store.state.theme.name + " from " + file.name)
             }
             
             reader.readAsText(file)
         } else {
-            this.setStatus("File not supported!")
+            this.$store.commit("addLnToStatus", "File not supported!")
             return false
         }
       },
@@ -57,6 +53,7 @@
         let fileName = theme.name.toLowerCase().replace(" ", "_") + ".json"
 
         let blob = new Blob([content], { type: 'text/json' })
+        this.$store.commit("addLnToStatus", "Saved " + theme.name + " as " + fileName)
         let a = document.createElement('a')
         a.download = fileName
         a.href = URL.createObjectURL(blob)
@@ -81,6 +78,7 @@
         let link = document.createElement('a')
         link.download = 'screenshot-'+today+'.png'
         link.href = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        this.$store.commit("addLnToStatus", "Took screenshot at " + today)
         link.click()
       },
 
@@ -95,6 +93,7 @@
           canvas.style.height = "240px"
           this.isFullscreen = false
         }
+        this.$store.commit("addLnToStatus", "Fullscreen : " + this.isFullscreen)
       }
 	  },
 

@@ -36,11 +36,6 @@
 		    }
 			},
 
-			setStatus(val) {
-			    console.log(val)
-			    this.$store.state.status = val
-			},
-
 			loadTheme() {
 		    let content = this.$store.state.theme
 				if ("colors" in content) {
@@ -48,7 +43,7 @@
           this.traverseColors("", content["colors"])
           return true
 		    } else {
-	        this.setStatus("No colors in theme!")
+					this.$store.commit("addLnToStatus", "No colors in theme!")
 	        return false
 		    }
 		    return this.Theme
@@ -56,7 +51,7 @@
 			
 			run() {
 
-				this.setStatus("Running...")
+				this.$store.commit("addLnToStatus", "Running...")
 
 				document.getElementById("canvas").remove()
 			 	let newCanvas = document.createElement("canvas")
@@ -82,7 +77,7 @@
 							if (name in _this.Theme) {
 								return _this.Theme[name];
 							} else {
-								_this.setStatus("Unknown color \"" + name +"\"");
+								_this.$store.commit("addLnToStatus", "Unknown color \"" + name +"\"");
 								_this.Module._IonSimulatorEventsPushEvent(217);
 								delete _this.Module;
 								_this.Module = null;

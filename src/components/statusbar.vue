@@ -1,6 +1,9 @@
 <template>
 	<div class="grayContainer" id="statusBar">
-		<span>{{ status }}</span>
+		<div class="consoleElement" v-for="key in Object.keys(this.status)">
+			<span class="consoleLineNumber">{{ key }}</span>
+			<strong>{{ this.status[key] }}</strong>
+		</div>
 	</div>
 </template>
 
@@ -19,5 +22,19 @@
 <style>
 	#statusBar {
 		color: #FFFFFF;
+		flex-grow: 1;
+		overflow: scroll;
+	}
+
+	.consoleElement {
+		display: flex;
+		margin-bottom: 3px;
+	}
+
+	.consoleLineNumber {
+		text-align: center;
+		min-width: 15px;
+		margin-right: 8px;
+		color: #888888;
 	}
 </style>

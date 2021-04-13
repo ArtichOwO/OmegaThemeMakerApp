@@ -3,7 +3,9 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
   	"runTrigger": false,
-  	"status": "Idle...",
+  	"status": {
+  		0:"Welcome to Omega Theme Maker",
+  	},
   	"theme": {
   		"name": "Omega Light",
 		  "icons": "omega_light",
@@ -159,6 +161,13 @@ export default createStore({
   mutations: {
   	RUN_SIMULATOR(state, payload) {
 	    state.runTrigger = payload.func
+	  },
+
+	  addLnToStatus(state, pValue) {
+	  	console.log(pValue)
+	  	let statusConsole = document.getElementById("statusBar")
+	  	statusConsole.scrollTop = statusConsole.scrollHeight
+	  	state.status[Object.keys(state.status).length] = pValue
 	  }
   },
   actions: {

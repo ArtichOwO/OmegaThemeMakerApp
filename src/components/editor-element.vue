@@ -72,12 +72,14 @@
 			  el.select()
 			  document.execCommand('copy')
 			  document.body.removeChild(el)
+			  this.$store.commit("addLnToStatus", "Copied value : " + value)
 	  	},
 
 	  	pasteColor(pColorName, pSubColorName = undefined) {
 	  		navigator.clipboard.readText()
 				  .then(text => {
 				    this.updateColor(pColorName, text, pSubColorName)
+				    this.$store.commit("addLnToStatus", "Pasted value : " + text)
 				  })
 				  .catch(err => {
 				    console.error('Failed to read clipboard contents: ', err)

@@ -255,14 +255,14 @@ function importFile(win) {
   dialog.showOpenDialog(openProps)
     .then((file) => {
       if(file === undefined){
-        console.log("No file selected");
-        return;
+        win.webContents.send("addLnToStatus", "No file selected")
+        return
       }
 
       fs.readFile(file.filePaths[0], 'utf-8', (err, data) => {
         if(err){
-            alert("An error ocurred reading the file :" + err.message);
-            return;
+            win.webContents.send("addLnToStatus", "An error ocurred reading the file :" + err.message)
+            return
         }
         
         win.webContents.send("importJSON", data)

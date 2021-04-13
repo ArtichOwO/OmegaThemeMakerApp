@@ -41,12 +41,16 @@ export default {
       try {
         this.$store.state.theme = JSON.parse(arg)
       } catch(e) {
-        this.setStatus(e) 
+        this.$store.commit('addLnToStatus', e) 
       }
     })
 
     window.ipcRenderer.on('run', (event, arg) => {
       this.$store.getters.runSimulator
+    })
+
+    window.ipcRenderer.on('addLnToStatus', (event, arg) => {
+      this.$store.commit('addLnToStatus', arg)
     })
 
     window.ipcRenderer.on("newChosenColor", (event, arg) => {
@@ -55,6 +59,7 @@ export default {
       document.body.appendChild(el)
       el.select()
       document.execCommand('copy')
+      this.$store.commit('addLnToStatus', 'Copied value : ' + arg)
       document.body.removeChild(el)
     })
   }
