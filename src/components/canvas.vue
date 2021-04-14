@@ -56,6 +56,10 @@
 				document.getElementById("canvas").remove()
 			 	let newCanvas = document.createElement("canvas")
 			 	newCanvas.id = "canvas"
+			 	if (this.$store.state.isFullscreen) {
+					newCanvas.style.width = "640px"
+					newCanvas.style.height = "480px"
+				}
 			 	newCanvas.setAttribute("oncontextmenu", "event.preventDefault()")
 			 	this.$refs.canvasContainer.appendChild(newCanvas)
 
@@ -75,17 +79,17 @@
 						arguments: ['--language', epsilonLanguage],
 						onColorRequest: function(name) {
 							if (name in _this.Theme) {
-								return _this.Theme[name];
+								return _this.Theme[name]
 							} else {
-								_this.$store.commit("addLnToStatus", "<span style=\"color: #FF0000;\">Unknown color \"" + name +"\"</span>");
+								_this.$store.commit("addLnToStatus", "<span style=\"color: #FF0000;\">Unknown color \"" + name +"\"</span>")
 								_this.Module._IonSimulatorEventsPushEvent(217);
-								delete _this.Module;
-								_this.Module = null;
-								return 0xFF00FF;
+								delete _this.Module
+								_this.Module = null
+								return 0xFF00FF
 							}
 						}
 					}
-					simulator(this.Module);
+					simulator(this.Module)
 				}
 			}
 		},

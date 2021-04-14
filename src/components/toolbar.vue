@@ -16,12 +16,6 @@
 	export default {
 		name: "toolbar",
 
-    data() {
-      return {
-        isFullscreen: false
-      }
-    },
-
 	  methods: {
 	  	run() {
         this.$store.getters.runSimulator
@@ -84,16 +78,16 @@
 
       fullscreen() {
         let canvas = document.getElementById('canvas')
-        if (!this.isFullscreen) {
-          canvas.style.width = "640px"
-          canvas.style.height = "480px"
-          this.isFullscreen = true
-        } else {
+        if (this.$store.state.isFullscreen) {
           canvas.style.width = "320px"
           canvas.style.height = "240px"
-          this.isFullscreen = false
+          this.$store.state.isFullscreen = false
+        } else {
+          canvas.style.width = "640px"
+          canvas.style.height = "480px"
+          this.$store.state.isFullscreen = true
         }
-        this.$store.commit("addLnToStatus", "Fullscreen : " + this.isFullscreen)
+        this.$store.commit("addLnToStatus", "Fullscreen : " + this.$store.state.isFullscreen)
       }
 	  },
 
