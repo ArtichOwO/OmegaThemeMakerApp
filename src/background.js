@@ -147,6 +147,13 @@ function setMainMenu() {
             importFile()
           }
         },
+        {
+          label: 'Save',
+          accelerator: 'CommandOrControl+S',
+          click : async () => {
+            win.webContents.send("save")
+          }
+        },
         { type: 'separator' },
         { role: 'close' }
       ]
@@ -158,9 +165,15 @@ function setMainMenu() {
       role: 'help',
       submenu : [
         {
-          label: 'En savoir plus',
-          clic : async () => {
-            shell.openExternal('https://electronjs.org')
+          label: 'Github',
+          clic: async () => {
+            shell.openExternal('https://github.com/ArtichOwO/OmegaThemeMakerApp/')
+          }
+        },
+        {
+          label: 'Discord',
+          clic: async () => {
+            shell.openExternal('https://discord.gg/u5Hxn2Cmt3')
           }
         }
       ]
