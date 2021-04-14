@@ -2,7 +2,7 @@
 	<div class="grayContainer" id="statusBar">
 		<div class="consoleElement" v-for="key in Object.keys(this.status)">
 			<span class="consoleLineNumber">{{ key }}</span>
-			<strong>{{ this.status[key] }}</strong>
+			<strong v-html="this.status[key]"></strong>
 		</div>
 	</div>
 </template>
@@ -36,5 +36,9 @@
 		min-width: 15px;
 		margin-right: 8px;
 		color: #888888;
+	}
+
+	#statusBar a:link {
+	  color: #FFFFFF;
 	}
 </style>

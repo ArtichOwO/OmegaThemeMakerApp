@@ -1,11 +1,13 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, Menu, dialog, ipcMain, TouchBar } from 'electron'
+import { app, protocol, BrowserWindow, Menu, dialog, ipcMain, TouchBar, shell } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const path = require('path')
 const fs = require('fs')
+
+var win;
 
 import store from './store'
 
@@ -16,7 +18,7 @@ protocol.registerSchemesAsPrivileged([
 
 async function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
@@ -43,8 +45,8 @@ async function createWindow() {
     win.loadURL('app://./index.html')
   }
 
-  setMainMenu(win);
-  win.setTouchBar(createTouchBar(win))
+  setMainMenu();
+  win.setTouchBar(createTouchBar())
 }
 
 // Quit when all windows are closed.
@@ -75,6 +77,11 @@ app.on('ready', async () => {
     }
   }
   createWindow()
+
+  win.webContents.on('new-window', (event, arg) => {
+    event.preventDefault();
+    shell.openExternal(arg);
+  })
 })
 
 // Exit cleanly on request from parent process in development mode.
@@ -125,7 +132,7 @@ rpc.login({ clientId }).catch(console.error)
 
 // Main Menu
 
-function setMainMenu(win) {
+function setMainMenu() {
   const isMac = process.platform === 'darwin'
 
   const template = [
@@ -137,7 +144,7 @@ function setMainMenu(win) {
           label: 'Open',
           accelerator: 'CommandOrControl+O',
           click : async () => {
-            importFile(win)
+            importFile()
           }
         },
         { type: 'separator' },
@@ -153,7 +160,6 @@ function setMainMenu(win) {
         {
           label: 'En savoir plus',
           clic : async () => {
-            const { shell } = require('electron')
             shell.openExternal('https://electronjs.org')
           }
         }
@@ -166,14 +172,14 @@ function setMainMenu(win) {
 
 // MacBook Pro Touch Bar integration
 
-function createTouchBar(win) {
+function createTouchBar() {
   const { TouchBarLabel, TouchBarButton, TouchBarSpacer, TouchBarColorPicker, TouchBarGroup } = TouchBar
 
   const openButton = new TouchBarButton({
     label: '📂',
     backgroundColor: '#333333',
     click: () => {
-      importFile(win)
+      importFile()
     }
   })
 
@@ -241,7 +247,7 @@ function createTouchBar(win) {
 
 // Others
 
-function importFile(win) {
+function importFile() {
   let openProps = {
     title: "Open JSON theme",
     filters: [
@@ -255,17 +261,17 @@ function importFile(win) {
   dialog.showOpenDialog(openProps)
     .then((file) => {
       if(file === undefined){
-        win.webContents.send("addLnToStatus", "No file selected")
+        globalThis.win.webContents.send("addLnToStatus", "No file selected")
         return
       }
 
       fs.readFile(file.filePaths[0], 'utf-8', (err, data) => {
         if(err){
-            win.webContents.send("addLnToStatus", "An error ocurred reading the file :" + err.message)
+            globalThis.win.webContents.send("addLnToStatus", "An error ocurred reading the file :" + err.message)
             return
         }
         
-        win.webContents.send("importJSON", data)
+        globalThis.win.webContents.send("importJSON", data)
       })
   })
 }

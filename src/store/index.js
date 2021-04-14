@@ -4,7 +4,9 @@ export default createStore({
   state: {
   	"runTrigger": false,
   	"status": {
-  		0:"Welcome to Omega Theme Maker",
+  		0:"<span style=\"color: #00b2b0;\">Welcome to Omega Theme Maker</span>",
+  		1:"For more information check its <a target=\"_blank\" href=\"https://github.com/ArtichOwO/OmegaThemeMakerApp/\">Github repository</a>",
+  		2:"You can also join our <a target=\"_blank\" href=\"https://discord.gg/u5Hxn2Cmt3\">Discord server</a>!<br /> We mainly talk French there, but feel free to come and talk in English!"
   	},
   	"theme": {
   		"name": "Omega Light",
