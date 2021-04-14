@@ -261,17 +261,17 @@ function importFile() {
   dialog.showOpenDialog(openProps)
     .then((file) => {
       if(file === undefined){
-        globalThis.win.webContents.send("addLnToStatus", "No file selected")
+        win.webContents.send("addLnToStatus", "<span style=\"color: #FF0000;\">No file selected</span>")
         return
       }
 
       fs.readFile(file.filePaths[0], 'utf-8', (err, data) => {
         if(err){
-            globalThis.win.webContents.send("addLnToStatus", "An error ocurred reading the file :" + err.message)
+            win.webContents.send("addLnToStatus", "<span style=\"color: #FF0000;\">An error ocurred reading the file :" + err.message + "</span>")
             return
         }
         
-        globalThis.win.webContents.send("importJSON", data)
+        win.webContents.send("importJSON", data)
       })
   })
 }

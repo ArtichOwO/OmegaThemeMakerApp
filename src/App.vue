@@ -41,7 +41,7 @@ export default {
       try {
         this.$store.state.theme = JSON.parse(arg)
       } catch(e) {
-        this.$store.commit('addLnToStatus', e) 
+        this.$store.commit('addLnToStatus', '<span style=\"color: #FF0000;\">' + e + '</span>') 
       }
     })
 

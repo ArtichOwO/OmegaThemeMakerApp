@@ -84,7 +84,7 @@
 				    this.$store.commit("addLnToStatus", "Pasted value : " + text)
 				  })
 				  .catch(err => {
-				    console.error('Failed to read clipboard contents: ', err)
+				    $store.commit("addLnToStatus", '<span style=\"color: #FF0000;\">Failed to read clipboard contents: ' + err + '</span>')
 				  });
 	  	},
 
