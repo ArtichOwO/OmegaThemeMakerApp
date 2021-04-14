@@ -42,7 +42,7 @@
             
             reader.readAsText(file)
         } else {
-            this.$store.commit("addLnToStatus", "File not supported!")
+            this.$store.commit("addLnToStatus", "<span style=\"color: #FF0000;\">File not supported!</span>")
             return false
         }
       },

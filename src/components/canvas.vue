@@ -43,7 +43,7 @@
           this.traverseColors("", content["colors"])
           return true
 		    } else {
-					this.$store.commit("addLnToStatus", "No colors in theme!")
+					this.$store.commit("addLnToStatus", "<span style=\"color: #FF0000;\">No colors in theme!</span>")
 	        return false
 		    }
 		    return this.Theme
@@ -77,7 +77,7 @@
 							if (name in _this.Theme) {
 								return _this.Theme[name];
 							} else {
-								_this.$store.commit("addLnToStatus", "Unknown color \"" + name +"\"");
+								_this.$store.commit("addLnToStatus", "<span style=\"color: #FF0000;\">Unknown color \"" + name +"\"</span>");
 								_this.Module._IonSimulatorEventsPushEvent(217);
 								delete _this.Module;
 								_this.Module = null;
