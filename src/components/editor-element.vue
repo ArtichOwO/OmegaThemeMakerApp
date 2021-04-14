@@ -15,6 +15,7 @@
 				<div class="separator" />
 				<img src="../assets/editorElem/copybutton.svg" alt="Copy" class="elemButton noselect" @click="copyColor(colorName)">
 				<img src="../assets/editorElem/pastebutton.svg" alt="Paste" class="elemButton noselect" @click="pasteColor(colorName)">
+				<img src="../assets/editorElem/resetbutton.svg" alt="Paste" class="elemButton noselect" @click="resetColor(colorName)">
 			</div>
 
 			<div v-else>
@@ -26,6 +27,7 @@
 					<div class="separator" />
 					<img src="../assets/editorElem/copybutton.svg" alt="Copy" class="elemButton noselect" @click="copyColor(colorName + '-' + colorItem)">
 					<img src="../assets/editorElem/pastebutton.svg" alt="Paste" class="elemButton noselect" @click="pasteColor(colorName, colorItem)">
+					<img src="../assets/editorElem/resetbutton.svg" alt="Paste" class="elemButton noselect" @click="resetColor(colorName, colorItem)">
 				</div>
 			</div>
 		</span>
@@ -84,6 +86,14 @@
 				  .catch(err => {
 				    console.error('Failed to read clipboard contents: ', err)
 				  });
+	  	},
+
+	  	resetColor(pColorName, pSubColorName = undefined) {
+	  		if (pSubColorName == undefined) {
+	  			this.$store.state.theme.colors[pColorName] = this.$store.state.originalTheme.colors[pColorName]
+	  		} else {
+	  			this.$store.state.theme.colors[pColorName][pSubColorName] = this.$store.state.originalTheme.colors[pColorName][pSubColorName]
+	  		}
 	  	}
 		}
 	}
