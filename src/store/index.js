@@ -4,22 +4,6 @@ export default createStore({
   state: {
   	"runTrigger": false,
   	"isFullscreen": false,
-Afficher plus
-index.js
-10 Ko
-! 𝟝𝟟𝟡 — Aujourd’hui à 21:44
-C le store index.js?
-ArtichautCosmique — Aujourd’hui à 21:46
-yup
-! 𝟝𝟟𝟡 — Aujourd’hui à 21:48
-Ok
-﻿
-import { createStore } from 'vuex'
-
-export default createStore({
-  state: {
-  	"runTrigger": false,
-  	"isFullscreen": false,
   	"discordRpc": false,
   	"status": {
   		0:"<span style=\"color: #00b2b0;\">Welcome to Omega Theme Maker</span>",
