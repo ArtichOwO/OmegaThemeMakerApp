@@ -1,3 +1,105 @@
+579
+#3440
+racingmikuhappy
+
+! 𝟝𝟟𝟡 — Aujourd’hui à 17:59
+Lance ton app
+Que je vois si jme fait pas arnaquer
+ArtichautCosmique — Aujourd’hui à 18:00
+azy xD
+alors ?
+! 𝟝𝟟𝟡 — Aujourd’hui à 18:01
+:ASyxntip:
+ArtichautCosmique — Aujourd’hui à 18:01
+thx x3
+ArtichautCosmique — Aujourd’hui à 18:57
+bon @! 𝟝𝟟𝟡  à quand le pr du coup
+! 𝟝𝟟𝟡 — Aujourd’hui à 18:57
+jépatesté wait
+ArtichautCosmique — Aujourd’hui à 18:57
+._.
+! 𝟝𝟟𝟡 — Aujourd’hui à 18:58
+:BeegYoshi:
+ce qui me bute
+c l'origine de cette emote
+ArtichautCosmique — Aujourd’hui à 18:58
+wat
+! 𝟝𝟟𝟡 — Aujourd’hui à 18:58
+cmt je met ds le state?
+ds le store?
+ArtichautCosmique — Aujourd’hui à 18:59
+ben par ex :
+state: {
+  "discordRpc": false,
+  "tructruc": { ... }
+}
+mais maybe ça y était déja
+! 𝟝𝟟𝟡 — Aujourd’hui à 19:00
+aok
+dans le store
+ArtichautCosmique — Aujourd’hui à 19:00
+ui
+! 𝟝𝟟𝟡 — Aujourd’hui à 19:00
+ca y était dejas normalement
+ArtichautCosmique — Aujourd’hui à 19:00
+nickel alors
+! 𝟝𝟟𝟡 — Aujourd’hui à 19:05
+opire
+fais le toi mm
+moi ca marche
+pas
+ArtichautCosmique — Aujourd’hui à 19:05
+._. non fait le
+je t'ai donné tt le code déjà T^T
+opir je sais
+supprime ton repo local
+wait ton repo tt court
+! 𝟝𝟟𝟡 — Aujourd’hui à 19:06
+stv
+ArtichautCosmique — Aujourd’hui à 19:06
+et reclone la nvlle version
+je t'envoie tt les fichiers qui ont changés
+et pis tu push et pr
+k je dois y aller
+a+
+! 𝟝𝟟𝟡 — Aujourd’hui à 19:08
+mdrr
+juste histoire que je fasse la pr
+ca me bute
+! 𝟝𝟟𝟡 — Aujourd’hui à 20:56
+si tu l'envoie pas mtn
+je peut pas le faire avant demain
+ArtichautCosmique — Aujourd’hui à 21:41
+fuck sorry j'était partie
+opir fais ça demain pagrav
+Type de fichier joint : unknown
+App.vue
+3.03 KB
+'use strict'
+
+import { app, protocol, BrowserWindow, Menu, dialog, ipcMain, TouchBar, shell } from 'electron'
+import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+const isDevelopment = process.env.NODE_ENV !== 'production'
+Afficher plus
+background.js
+8 Ko
+import { createStore } from 'vuex'
+
+export default createStore({
+  state: {
+  	"runTrigger": false,
+  	"isFullscreen": false,
+Afficher plus
+index.js
+10 Ko
+! 𝟝𝟟𝟡 — Aujourd’hui à 21:44
+C le store index.js?
+ArtichautCosmique — Aujourd’hui à 21:46
+yup
+! 𝟝𝟟𝟡 — Aujourd’hui à 21:48
+Ok
+﻿
 'use strict'
 
 import { app, protocol, BrowserWindow, Menu, dialog, ipcMain, TouchBar, shell } from 'electron'
@@ -82,6 +184,14 @@ app.on('ready', async () => {
     event.preventDefault();
     shell.openExternal(arg);
   })
+
+  rpc.on('ready', () => {
+    setActivity()
+
+    setInterval(() => {
+      setActivity()
+    }, 1e3)
+  })
 })
 
 // Exit cleanly on request from parent process in development mode.
@@ -108,27 +218,37 @@ const clientId = '821803171844194366';
 const rpc = new DiscordRPC.Client({ transport: 'ipc' });
 const startTimestamp = new Date();
 
+rpc.login({ clientId }).catch(console.error)
+
 async function setActivity() {
-  rpc.setActivity({
-    details: "Editing a theme",
-    startTimestamp,
-    largeImageKey: 'app-json-icon',
-    largeImageText: 'Editing the json file',
-    smallImageKey: 'icon',
-    smallImageText: 'Create your own theme for your calculator!',
-    instance: false,
-  });
+  win.webContents.send("getDiscordRPC")
 }
 
-rpc.on('ready', () => {
-  setActivity()
+ipcMain.on("returnRPCValue", (event, arg) => {
+  let fileName = arg[1].toLowerCase().replace(" ", "_") + ".json"
 
-  setInterval(() => {
-    setActivity()
-  }, 15e3)
+  if (arg[0]) {
+    rpc.setActivity({
+      details: "Editing " + fileName,
+      startTimestamp,
+      largeImageKey: 'omegadesign',
+      //largeImageText: '',
+      smallImageKey: 'icon',
+      smallImageText: 'Create your own theme for your calculator!',
+      instance: false,
+    })
+  } else {
+    rpc.setActivity({
+      details: "Editing " + fileName,
+      startTimestamp,
+      largeImageKey: 'app-json-icon',
+      largeImageText: 'JSON',
+      smallImageKey: 'icon',
+      smallImageText: 'Create your own theme for your calculator!',
+      instance: false,
+    })
+  }
 })
-
-rpc.login({ clientId }).catch(console.error)
 
 // Main Menu
 
