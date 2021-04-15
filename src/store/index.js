@@ -337,5 +337,3 @@ export default createStore({
 })
 
 export var store = createStore();
-index.js
-10 Ko
