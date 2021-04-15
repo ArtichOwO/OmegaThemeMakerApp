@@ -80,45 +80,46 @@ html, body, #app {
 }
 
 #mainContainer {
-    display: flex;
-    align-items: row;
-    height: 100%;
+  display: flex;
+  align-items: row;
+  height: 100%;
 }
 
 #secondPanel {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc((15px * 2) + 320px)
 }
 
 /*** Classes ***/
 
 .grayContainer {
-    background-color: #333333;
-    border-radius: 15px;
+  background-color: #333333;
+  border-radius: 15px;
 
-    padding: 15px;
-    margin: 15px;
+  padding: 15px;
+  margin: 15px;
 }
 
 .contextMenu--inactive {
-    display: none;
+  display: none;
 }
 
 .contextMenu--active {
-    display: block;
-    background-color: #AAAAAA;
-    color: white;
-    opacity: 0.9;
-    border-radius: 5px;
-    width: auto;
-    height: auto;
-    padding: 15px;
-    position: absolute;
+  display: block;
+  background-color: #AAAAAA;
+  color: white;
+  opacity: 0.9;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  position: absolute;
 }
 
 .colorPicker {
-    border-radius: 5px;
-    margin-right: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 .noselect {

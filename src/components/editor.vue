@@ -1,5 +1,5 @@
 <template>
-	<div id="JSONEditorContainer" class="grayContainer">
+	<div id="editorContainer" class="grayContainer">
 		<div class="noselect">
 			<button @click="switchEditor(true)">Color editor</button>
 			<button @click="switchEditor(false)">JSON editor</button>
@@ -13,7 +13,9 @@
 			<editorElement :colorName="color" v-for="color in Object.keys(colors)"/>
 		</div>
 
-		<textarea ref="JSONEditor" id="JSONEditor" placeholder="Type your JSON theme here..." @input="updateInputJSON">{{ stringifiedJSON }}</textarea>
+		<!-- <textarea ref="JSONEditor" id="JSONEditor" placeholder="Type your JSON theme here..." @input="updateInputJSON">{{ stringifiedJSON }}</textarea>-->
+
+		<span ref="JSONEditor" id="JSONEditor" @input="updateInputJSON" contenteditable>{{ JSON.stringify(this.$store.state.theme, null, 4) }}</span>
 	</div>
 </template>
 
@@ -29,7 +31,7 @@
 
 	  computed: {
 	    stringifiedJSON() {
-	      return JSON.stringify(this.$store.state.theme, null, 4);
+	      return JSON.stringify(this.$store.state.theme, null, 4)
 	    },
 	    colors() {
 	    	return this.$store.state.theme.colors
@@ -38,7 +40,7 @@
 
 	  methods: {
 	  	updateInputJSON() {
-	  		let content = document.getElementById("JSONEditor").value
+	  		let content = document.getElementById("JSONEditor").innerHTML
 	  		this.$store.state.theme = JSON.parse(content)
 	  	},
 
@@ -57,7 +59,7 @@
 
 <style>
 
-#JSONEditorContainer {
+#editorContainer {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -74,13 +76,11 @@
   background-color: transparent;
   color: white;
   border: none;
-
-  width: 100%;
-  height: 100%;
-
+  white-space: pre;
   display: none;
-
+  width: auto;
   flex-grow: 1;
+  overflow: scroll;
 }
 
 #colorEditor {
