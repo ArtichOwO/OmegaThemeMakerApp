@@ -63,6 +63,10 @@ export default {
       this.$store.commit('addLnToStatus', 'Copied value : ' + arg)
       document.body.removeChild(el)
     })
+
+    window.ipcRenderer.on("getDiscordRPC", (event, arg) => {
+      window.ipcRenderer.send("returnRPCValue", [this.$store.state.discordRpc, this.$store.state.theme.name])
+    })
   }
 }
 </script>

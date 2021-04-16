@@ -82,6 +82,14 @@ app.on('ready', async () => {
     event.preventDefault();
     shell.openExternal(arg);
   })
+
+  rpc.on('ready', () => {
+    setActivity()
+
+    setInterval(() => {
+      setActivity()
+    }, 1e3)
+  })
 })
 
 // Exit cleanly on request from parent process in development mode.
@@ -108,27 +116,37 @@ const clientId = '821803171844194366';
 const rpc = new DiscordRPC.Client({ transport: 'ipc' });
 const startTimestamp = new Date();
 
+rpc.login({ clientId }).catch(console.error)
+
 async function setActivity() {
-  rpc.setActivity({
-    details: "Editing a theme",
-    startTimestamp,
-    largeImageKey: 'app-json-icon',
-    largeImageText: 'Editing the json file',
-    smallImageKey: 'icon',
-    smallImageText: 'Create your own theme for your calculator!',
-    instance: false,
-  });
+  win.webContents.send("getDiscordRPC")
 }
 
-rpc.on('ready', () => {
-  setActivity()
+ipcMain.on("returnRPCValue", (event, arg) => {
+  let fileName = arg[1].toLowerCase().replace(" ", "_") + ".json"
 
-  setInterval(() => {
-    setActivity()
-  }, 15e3)
+  if (arg[0]) {
+    rpc.setActivity({
+      details: "Editing " + fileName,
+      startTimestamp,
+      largeImageKey: 'omegadesign',
+      //largeImageText: '',
+      smallImageKey: 'icon',
+      smallImageText: 'Create your own theme for your calculator!',
+      instance: false,
+    })
+  } else {
+    rpc.setActivity({
+      details: "Editing " + fileName,
+      startTimestamp,
+      largeImageKey: 'app-json-icon',
+      largeImageText: 'JSON',
+      smallImageKey: 'icon',
+      smallImageText: 'Create your own theme for your calculator!',
+      instance: false,
+    })
+  }
 })
-
-rpc.login({ clientId }).catch(console.error)
 
 // Main Menu
 
