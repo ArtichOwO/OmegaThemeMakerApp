@@ -4,7 +4,7 @@ export default createStore({
   state: {
   	"runTrigger": false,
   	"isFullscreen": false,
-  	"discordRpc": false,
+  	"discordRpc": true,
   	"status": {
   		0:"<span style=\"color: #00b2b0;\">Welcome to Omega Theme Maker</span>",
   		1:"For more information check its <a target=\"_blank\" href=\"https://github.com/ArtichOwO/OmegaThemeMakerApp/\">Github repository</a>",
