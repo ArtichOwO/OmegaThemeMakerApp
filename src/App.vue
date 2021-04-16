@@ -1,6 +1,5 @@
 <template>
   <div id="mainContainer">
-    <button @click="switch">Click me!</button>
     <editor />
 
     <div id="secondPanel">
@@ -34,10 +33,6 @@ export default {
     setStatus(val) {
         console.log(val)
         this.$store.state.status = val
-    },
-
-    switch() {
-      this.$store.state.discordRpc = !this.$store.state.discordRpc
     }
   },
 
