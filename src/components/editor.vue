@@ -48,9 +48,11 @@
 	  		if (pWhich) {
 	  			this.$refs.JSONEditor.style.display = "none"
 	  			this.$refs.colorEditor.style.display = "flex"
+	  			this.$store.state.discordRpc = !this.$store.state.discordRpc
 	  		} else {
 	  			this.$refs.JSONEditor.style.display = "block"
 	  			this.$refs.colorEditor.style.display = "none"
+	  			this.$store.state.discordRpc = !this.$store.state.discordRpc
 	  		}
 	  	}
 	  }
