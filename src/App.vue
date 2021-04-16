@@ -40,6 +40,7 @@ export default {
     window.ipcRenderer.on('importJSON', (event, arg) => {
       try {
         this.$store.state.theme = JSON.parse(arg)
+        this.$store.state.originalTheme = JSON.parse(arg)
       } catch(e) {
         this.$store.commit('addLnToStatus', '<span style=\"color: #FF0000;\">' + e + '</span>') 
       }

@@ -31,6 +31,7 @@
             reader.onload = function(e) {
                 let content = reader.result
                 _this.$store.state.theme = JSON.parse(content)
+                _this.$store.state.originalTheme = JSON.parse(content)
                 _this.$store.commit("addLnToStatus", "Imported " + _this.$store.state.theme.name + " from " + file.name)
             }
             
