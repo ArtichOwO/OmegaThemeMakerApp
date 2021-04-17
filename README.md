@@ -8,7 +8,8 @@ $ cd OmegaThemeMakerApp
 $ yarn install
 $ yarn electron:serve # For "live" testing
 $ yarn electron:build # To build binaries
-# yarn serve not working atm
+$ yarn serve          # Run web version
+$ yarn build          # Build web version
 ```
 To cross compile, add a [platform argument](https://www.electron.build/cli)
 ```bash

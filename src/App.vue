@@ -16,8 +16,6 @@ import toolbar from "./components/toolbar.vue"
 import vueCanvas from "./components/canvas.vue"
 import statusbar from "./components/statusbar.vue"
 
-import { app, protocol, BrowserWindow, Menu, dialog } from 'electron'
-
 export default {
 
   name: 'App',
