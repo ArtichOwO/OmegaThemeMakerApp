@@ -38,7 +38,7 @@
 		color: #888888;
 	}
 
-	#statusBar a:link {
+	#statusBar a:any-link {
 	  color: #FFFFFF;
 	}
 </style>
