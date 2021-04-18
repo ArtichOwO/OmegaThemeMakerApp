@@ -30,5 +30,5 @@ You can also edit the JSON version of the theme, simply click on `JSON Editor`.
 + The "fullscreen" icon will allow you to make the screen bigger
 
 # Licence
-[epsilon.js](https://github.com/ArtichOwO/OmegaThemeMakerApp/blob/dev/src/external-js/epsilon.js) provided under CC-BY-SA-NC. The rest of the repo is CC0.  
+[`epsilon.js`](https://github.com/ArtichOwO/OmegaThemeMakerApp/blob/dev/src/external-js/epsilon.js) provided under CC-BY-SA-NC. The rest of the repo is CC0.  
 Copy and paste icons are originally made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.  
