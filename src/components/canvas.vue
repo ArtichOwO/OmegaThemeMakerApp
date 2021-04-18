@@ -17,8 +17,14 @@
 			}
 		},
 
+		computed: {
+			runTrigger() {
+				return this.$store.state.runTrigger
+			}
+		},
+
 		watch: {
-			runRun: function(){
+			runTrigger: function() {
 				this.run()
 			}
 		},
@@ -92,13 +98,7 @@
 					simulator(this.Module)
 				}
 			}
-		},
-
-		mounted() {
-    	this.$store.dispatch('runSimulator', {
-      	func: this.run
-    	})
-  	}
+		}
 	}
 </script>
 

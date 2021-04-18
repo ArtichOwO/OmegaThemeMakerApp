@@ -18,7 +18,7 @@
 
 	  methods: {
 	  	run() {
-        this.$store.getters.runSimulator
+        this.$store.commit("runTrigger")
 			},
 
       importFile() {

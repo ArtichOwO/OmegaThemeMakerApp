@@ -2,9 +2,9 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-  	"runTrigger": false,
   	"isFullscreen": false,
   	"discordRpc": true,
+  	"runTrigger": false,
   	"status": {
   		0:"<span style=\"color: #00b2b0;\">Welcome to Omega Theme Maker</span>",
   		1:"For more information check its <a target=\"_blank\" href=\"https://github.com/ArtichOwO/OmegaThemeMakerApp/\">Github repository</a>",
@@ -315,8 +315,8 @@ export default createStore({
   	}
   },
   mutations: {
-  	RUN_SIMULATOR(state, payload) {
-	    state.runTrigger = payload.func
+	  runTrigger(state) {
+	  	state.runTrigger = !state.runTrigger
 	  },
 
 	  addLnToStatus(state, pValue) {
@@ -325,15 +325,7 @@ export default createStore({
 	  	statusConsole.scrollTop = statusConsole.scrollHeight
 	  	state.status[Object.keys(state.status).length] = pValue
 	  }
-  },
-  actions: {
-  	runSimulator: (context, payload) => {
-	    context.commit('RUN_SIMULATOR', payload)
-	  }
-  },
-  getters: {
-	  runSimulator: state => state.runTrigger(),
-	}
+  }
 })
 
 export var store = createStore();
