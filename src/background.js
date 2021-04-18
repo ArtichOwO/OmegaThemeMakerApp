@@ -123,7 +123,7 @@ async function setActivity() {
 }
 
 ipcMain.on("returnRPCValue", (event, arg) => {
-  let fileName = arg[1].toLowerCase().replace(" ", "_") + ".json"
+  let fileName = arg[1].toLowerCase().replaceAll(" ", "_") + ".json"
 
   if (arg[0]) {
     rpc.setActivity({

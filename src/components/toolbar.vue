@@ -45,7 +45,7 @@
       save() {
         let theme = this.$store.state.theme
         let content = JSON.stringify(theme, null, 4)
-        let fileName = theme.name.toLowerCase().replace(" ", "_") + ".json"
+        let fileName = theme.name.toLowerCase().replaceAll(" ", "_") + ".json"
 
         let blob = new Blob([content], { type: 'text/json' })
         this.$store.commit("addLnToStatus", "Saved " + theme.name + " as " + fileName)
