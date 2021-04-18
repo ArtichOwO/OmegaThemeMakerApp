@@ -2,7 +2,7 @@
 	<div class="grayContainer" id="statusBar">
 		<div class="consoleElement" v-for="key in Object.keys(this.status)">
 			<span class="consoleLineNumber">{{ key }}</span>
-			<strong v-html="this.status[key]"></strong>
+			<span class="text-bold" v-html="this.status[key]"></span>
 		</div>
 	</div>
 </template>

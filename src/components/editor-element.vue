@@ -3,14 +3,13 @@
 <template>
 	<div class="elemContainer">
 		<div v-if="isString" class="colorDiv">
-			<span class="elemTitle"><strong> {{ stringContent }} : </strong></span>
+			<span class="elemTitle text-bold">{{ stringContent }}&nbsp;: </span>
 			<input :id="stringContent.toLowerCase()" type="text" name="" :value="this.$store.state.theme[stringContent.toLowerCase()]" @input="updateString(stringContent.toLowerCase(), $event.target.value)" >
-			<div class="separator" />
 		</div>
 
 		<span v-else>
 			<div v-if="typeof colors[colorName] === 'string'" class="colorDiv">
-				<span class="elemTitle"><strong> {{ colorName }} : </strong></span>
+				<span class="elemTitle text-bold">{{ colorName }}&nbsp;: </span>
 				<input :id="colorName" type="color" name="" :value="'#'+colors[colorName]" @input="updateColor(colorName, $event.target.value)" >
 				<div class="separator" />
 				<img src="../assets/editorElem/copybutton.svg" alt="Copy" class="elemButton noselect" @click="copyColor(colorName)">
@@ -19,10 +18,10 @@
 			</div>
 
 			<div v-else>
-				<span class="elemTitle"><strong> {{ colorName }} : </strong></span>
+				<span class="elemTitle text-bold">{{ colorName }} : </span>
 				<hr>
 				<div v-for="colorItem in Object.keys(colors[colorName])" class="colorDiv">
-					<span class="elemTitle">{{ colorItem }} : </span>
+					<span class="elemTitle">{{ colorItem }}&nbsp;: </span>
 					<input :id="colorName + '-' + colorItem" type="color" :value="'#'+colors[colorName][colorItem]" @input="updateColor(colorName, $event.target.value, colorItem)">
 					<div class="separator" />
 					<img src="../assets/editorElem/copybutton.svg" alt="Copy" class="elemButton noselect" @click="copyColor(colorName + '-' + colorItem)">
@@ -108,13 +107,13 @@
 		margin: 15px;
 		max-width: 550px;
 		flex-grow: 1;
+		flex-basis: 0;
 	}
 
 	.colorDiv {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		flex-wrap: wrap;
 	}
 
 	.elemButton {

@@ -125,6 +125,10 @@ html, body, #app {
   margin-right: 10px;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
