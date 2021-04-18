@@ -21,13 +21,13 @@ You can join our discord server, [Omega Prod](https://discord.gg/u5Hxn2Cmt3)!
 (We mainly speaks French there, but you're welcome to talk in English)
 
 # How do I use it ?
-On the left side of the interface, you will be able to find all the color related code from the OS, and you will then be able to change the color values in order to change the color of the different elements of the interface.  
+On the left side of the interface, you will be able to find all the color-related code from the OS, and you will then be able to change the color values in order to change the color of the different elements of the interface.  
 You can also edit the JSON version of the theme, simply click on `JSON Editor`.
   
-+ If you want to see how the colors fits in, simply press the "play" button to launch the simulator.  
++ If you want to see how the colors fit in, simply press the "play" button to launch the simulator.  
 + The "import" icon next to the play button will allow you to load a work that you may have previously saved using the "floppy-disk" button.  
 + With the "screenshot" button, you can, well, take a screenshot
-+ The "fullscreen" icon will allows you to make the screen bigger
++ The "fullscreen" icon will allow you to make the screen bigger
 
 # Licence
 [epsilon.js](https://github.com/ArtichOwO/OmegaThemeMakerApp/blob/dev/src/external-js/epsilon.js) provided under CC-BY-SA-NC. The rest of the repo is CC0.  
