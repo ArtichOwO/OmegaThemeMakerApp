@@ -190,9 +190,20 @@ function setMainMenu() {
         },
         {
           label: 'Discord',
-          click: async () => {
-            shell.openExternal('https://discord.gg/u5Hxn2Cmt3')
-          }
+          submenu: [
+            {
+              label: 'Omega (Official)',
+              click: async () => {
+                shell.openExternal('https://discord.gg/JpmjSH3')
+              }
+            },
+            {
+              label: 'Omega Prod',
+              click: async () => {
+                shell.openExternal('https://discord.gg/u5Hxn2Cmt3')
+              }
+            }
+          ]
         }
       ]
     }
