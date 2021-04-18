@@ -184,13 +184,13 @@ function setMainMenu() {
       submenu : [
         {
           label: 'Github',
-          clic: async () => {
+          click: async () => {
             shell.openExternal('https://github.com/ArtichOwO/OmegaThemeMakerApp/')
           }
         },
         {
           label: 'Discord',
-          clic: async () => {
+          click: async () => {
             shell.openExternal('https://discord.gg/u5Hxn2Cmt3')
           }
         }
