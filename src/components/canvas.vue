@@ -31,7 +31,27 @@
 
 		methods: {
 			traverseColors(root, data) {
-		    for (let i in data) {
+		    if (this.$store.state.theme.version == 2) {
+		    	for (let i in data) {
+		    		let v = data[i]
+
+		    		if (typeof v === "string" || v instanceof String) {
+		    				console.log(root)
+		            if (root == "Main") {
+		            	this.Theme[i] = parseInt(v, 16)
+		            } else {
+		            	if (i == "Main") {
+			            	this.Theme[root] = parseInt(v, 16)
+			            } else {
+			            	this.Theme[root + i] = parseInt(v, 16)
+			            }
+		            }
+		        } else {
+		            this.traverseColors(root + i, v)
+		        }
+		    	}
+		    } else {
+		    	for (let i in data) {
 		        let v = data[i]
 		        
 		        if (typeof v === "string" || v instanceof String) {
@@ -39,6 +59,7 @@
 		        } else {
 		            this.traverseColors(root + i, v)
 		        }
+		    	}
 		    }
 			},
 
