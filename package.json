@@ -2,9 +2,16 @@
   "name": "othmkr",
   "productName": "Omega Theme Maker",
   "version": "1.2.0",
-  "private": true,
-  "author": "Omega-Numworks",
   "description": "A theme maker for the NumWorks Calculator",
+  "private": true,
+
+  "author": "Omega-Numworks <omegaprod@protonmail.com>",
+  "homepage": "https://github.com/ArtichOwO/OmegaThemeMakerApp",
+  "bugs": {
+    "url" : "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
+    "email": "omegaprod@protonmail.com"
+  },
+
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

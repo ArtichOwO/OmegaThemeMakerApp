@@ -6,7 +6,10 @@ module.exports = {
       builderOptions: {
 		    mac: {
 		      category: "public.app-category.graphics-design"
-		    }
+		    },
+        linux: {
+          target: ["AppImage", "deb"]
+        }
       }
     },
   },
