@@ -4,14 +4,12 @@
   "version": "2.0.0",
   "description": "A theme maker for the NumWorks Calculator",
   "private": true,
-
   "author": "Omega-Numworks <omegaprod@protonmail.com>",
   "homepage": "https://github.com/ArtichOwO/OmegaThemeMakerApp",
   "bugs": {
-    "url" : "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
+    "url": "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
     "email": "omegaprod@protonmail.com"
   },
-
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -34,9 +32,10 @@
     "vue": "^3.0.0",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.6",
     "vuex": "^4.0.0-0",
+    "write-file-atomic": "^3.0.3",
     "ws": "^7.4.4",
     "yarn": "^1.22.10",
-    "write-file-atomic": "^3.0.3"
+    "is-svg": "^4.2.2"
   },
   "browserslist": [
     "> 1%",
