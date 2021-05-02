@@ -66,6 +66,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 #JSONEditor:focus {
@@ -88,6 +89,7 @@
 
 #metaEditor {
 	display: flex;
+	flex-wrap: wrap;
 	border-radius: 15px;
 	background-color: #555;
 	box-shadow: 0px 15px 51px -22px #000;

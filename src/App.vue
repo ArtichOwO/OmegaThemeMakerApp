@@ -1,6 +1,6 @@
 <template>
   <div id="mainContainer">
-    <editor />
+    <editor id="editorContainer" />
 
     <div id="secondPanel">
       <toolbar />
@@ -73,6 +73,23 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap');
 
+@media screen and (max-width: 640px) {
+  #mainContainer {
+    flex-direction: column !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  #secondPanel {
+    order: 0;
+    flex-basis: 100% !important;
+  }
+
+  #editorContainer {
+    order: 1;
+  }
+}
+
 html, body, #app {
   padding: 0;
   margin: 0;
@@ -84,7 +101,7 @@ html, body, #app {
 
 #mainContainer {
   display: flex;
-  align-items: row;
+  flex-direction: row;
   height: 100%;
 }
 

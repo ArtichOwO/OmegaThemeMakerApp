@@ -7,7 +7,7 @@
     <input type="file" name="Import" id="importButton" @input="importFile">
     <img src="../assets/toolBar/savebutton.png" alt="Save" id="saveButton" @click="save">
     <img src="../assets/toolBar/screenshotbutton.png" alt="ScrnShot" @click="screenshot">
-    <img src="../assets/toolBar/fullscreen.png" alt="FullScrn" @click="fullscreen">
+    <img class="mobileHide" src="../assets/toolBar/fullscreen.png" alt="FullScrn" @click="fullscreen">
 	</div>
 </template>
 
@@ -109,6 +109,12 @@
 </script>
 
 <style>
+
+@media screen and (max-width: 640px) {
+  .mobileHide {
+    display: none;
+  }
+}
 
 #toolBar {
   display: flex;

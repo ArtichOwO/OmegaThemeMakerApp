@@ -125,6 +125,13 @@
 
 <style>
 
+@media screen and (max-width: 640px) {
+  #canvas {
+    width: 160px !important;
+    height: 120px !important;
+  }
+}
+
 #canvas {
 		width: 320px;
 		height: 240px;

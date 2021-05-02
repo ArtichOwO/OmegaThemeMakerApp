@@ -20,6 +20,12 @@
 </script>
 
 <style>
+	@media screen and (max-width: 640px) {
+	  #statusBar {
+	    display: none;
+	  }
+	}
+
 	#statusBar {
 		color: #FFFFFF;
 		flex-grow: 1;
