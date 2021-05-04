@@ -1,7 +1,8 @@
 # Omega Theme Maker App
-[M4x1m3](https://github.com/M4xi1m3)'s [theme maker](https://github.com/M4xi1m3/Omega-ThMkr), but for desktop!
+[M4x1m3](https://github.com/M4xi1m3)'s [theme maker](https://github.com/M4xi1m3/Omega-ThMkr), but for desktop!  
+[![CodeFactor](https://www.codefactor.io/repository/github/artichowo/omegathememakerapp/badge)](https://www.codefactor.io/repository/github/artichowo/omegathememakerapp)  
 
-Build:
+### Build:
 ```bash
 $ git clone https://github.com/ArtichOwO/OmegaThemeMakerApp
 $ cd OmegaThemeMakerApp
