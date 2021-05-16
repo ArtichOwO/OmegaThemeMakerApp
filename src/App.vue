@@ -11,75 +11,81 @@
 </template>
 
 <script>
-import editor from "./components/editor.vue"
-import toolbar from "./components/toolbar.vue"
-import vueCanvas from "./components/canvas.vue"
-import statusbar from "./components/statusbar.vue"
+import editor from "./components/editor.vue";
+import toolbar from "./components/toolbar.vue";
+import vueCanvas from "./components/canvas.vue";
+import statusbar from "./components/statusbar.vue";
 
 export default {
-
-  name: 'App',
+  name: "App",
 
   components: {
-    editor, 
+    editor,
     toolbar,
     vueCanvas,
-    statusbar
+    statusbar,
   },
 
   methods: {
     setStatus(val) {
-        console.log(val)
-        this.$store.state.status = val
-    }
+      console.log(val);
+      this.$store.state.status = val;
+    },
   },
 
   mounted() {
-    window.ipcRenderer.on('importJSON', (event, arg) => {
+    window.ipcRenderer.on("importJSON", (event, arg) => {
       try {
-        this.$store.state.theme = JSON.parse(arg)
-        this.$store.state.originalTheme = JSON.parse(arg)
-      } catch(e) {
-        this.$store.commit('addLnToStatus', '<span style=\"color: #FF0000;\">' + e + '</span>') 
+        this.$store.state.theme = JSON.parse(arg);
+        this.$store.state.originalTheme = JSON.parse(arg);
+      } catch (e) {
+        this.$store.commit(
+          "addLnToStatus",
+          '<span style="color: #FF0000;">' + e + "</span>"
+        );
       }
-    })
+    });
 
-    window.ipcRenderer.on('run', (event, arg) => {
-      this.$store.getters.runSimulator
-    })
+    window.ipcRenderer.on("run", () => {
+      this.$store.getters.runSimulator;
+    });
 
-    window.ipcRenderer.on('addLnToStatus', (event, arg) => {
-      this.$store.commit('addLnToStatus', arg)
-    })
+    window.ipcRenderer.on("addLnToStatus", (arg) => {
+      this.$store.commit("addLnToStatus", arg);
+    });
 
-    window.ipcRenderer.on("newChosenColor", (event, arg) => {
-      const el = document.createElement('textarea')
-      el.value = arg
-      document.body.appendChild(el)
-      el.select()
-      document.execCommand('copy')
-      this.$store.commit('addLnToStatus', 'Copied value : ' + arg)
-      document.body.removeChild(el)
-    })
+    window.ipcRenderer.on("newChosenColor", (arg) => {
+      const el = document.createElement("textarea");
+      el.value = arg;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      this.$store.commit("addLnToStatus", "Copied value : " + arg);
+      document.body.removeChild(el);
+    });
 
-    window.ipcRenderer.on("getDiscordRPC", (event, arg) => {
-      window.ipcRenderer.send("returnRPCValue", [this.$store.state.discordRpc, this.$store.state.theme.name])
-    })
-  }
-}
+    window.ipcRenderer.on("getDiscordRPC", () => {
+      window.ipcRenderer.send("returnRPCValue", [
+        this.$store.state.discordRpc,
+        this.$store.state.theme.name,
+      ]);
+    });
+  },
+};
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap');
-
-html, body, #app {
+html,
+body,
+#app {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
   background-color: #252526;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 #mainContainer {
@@ -91,7 +97,7 @@ html, body, #app {
 #secondPanel {
   display: flex;
   flex-direction: column;
-  flex-basis: calc((15px * 2) + 320px)
+  flex-basis: calc((15px * 2) + 320px);
 }
 
 /*** Classes ***/
@@ -110,7 +116,7 @@ html, body, #app {
 
 .contextMenu--active {
   display: block;
-  background-color: #AAAAAA;
+  background-color: #aaaaaa;
   color: white;
   opacity: 0.9;
   border-radius: 5px;
@@ -131,12 +137,11 @@ html, body, #app {
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-
 </style>
