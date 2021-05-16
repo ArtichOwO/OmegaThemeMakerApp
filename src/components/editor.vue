@@ -68,11 +68,6 @@
   flex-direction: column;
 }
 
-#JSONEditor:focus {
-  outline: none !important;
-  border: none;
-}
-
 #JSONEditor {
   box-sizing: border-box;
   resize: none;
@@ -84,6 +79,11 @@
   width: auto;
   flex-grow: 1;
   overflow: scroll;
+}
+
+#JSONEditor:focus {
+  outline: none !important;
+  border: none;
 }
 
 #metaEditor {
