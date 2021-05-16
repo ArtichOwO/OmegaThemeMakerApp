@@ -1,9 +1,17 @@
 {
   "name": "othmkr",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "description": "A theme maker for the NumWorks Calculator",
   "author": "Omega-Numworks <omegaprod@protonmail.com>",
+  "homepage": "https://github.com/ArtichOwO/OmegaThemeMakerApp",
+  "productName": "Omega Theme Maker",
+  "bugs": {
+    "url": "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
+    "email": "omegaprod@protonmail.com"
+  },
+
+  "main": "background.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,7 +21,6 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
-  "main": "background.js",
   "devDependencies": {
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -48,19 +55,13 @@
     "last 2 versions",
     "not dead"
   ],
-  "bugs": {
-    "url": "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
-    "email": "omegaprod@protonmail.com"
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "homepage": "https://github.com/ArtichOwO/OmegaThemeMakerApp",
   "lint-staged": {
     "*.{js,jsx,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "productName": "Omega Theme Maker"
+  }
 }
