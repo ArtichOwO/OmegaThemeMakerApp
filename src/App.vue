@@ -34,6 +34,10 @@ export default {
   },
 
   mounted() {
+    this.$store.state.originalTheme = JSON.parse(
+      JSON.stringify(this.$store.state.theme)
+    );
+
     window.ipcRenderer.on("importJSON", (event, arg) => {
       try {
         this.$store.state.theme = JSON.parse(arg);
