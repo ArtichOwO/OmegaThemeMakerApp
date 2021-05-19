@@ -28,6 +28,7 @@ export default {
   color: #ffffff;
   flex-grow: 1;
   overflow: scroll;
+  font-family: "Fira Code", sans-serif;
 }
 
 .consoleElement {

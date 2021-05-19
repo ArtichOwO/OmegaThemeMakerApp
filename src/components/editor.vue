@@ -157,6 +157,10 @@ button:hover {
   color: #333333;
 }
 
+input {
+  font-family: "Fira Code", sans-serif;
+}
+
 .prism-editor__textarea:focus {
   overflow: auto;
   outline: none;
