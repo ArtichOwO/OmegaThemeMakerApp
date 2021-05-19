@@ -18,30 +18,42 @@
       />
     </div>
 
-    <span
-      ref="JSONEditor"
+    <prism-editor
       id="JSONEditor"
+      v-model="code"
       @input="updateInputJSON"
-      contenteditable
-      >{{ stringifiedJSON }}</span
-    >
+      :highlight="highlighter"
+      :tabSize="4"
+      line-numbers
+    ></prism-editor>
   </div>
 </template>
 
 <script>
 import editorElement from "./editor-element.vue";
+import { PrismEditor } from "vue-prism-editor";
+import "vue-prism-editor/dist/prismeditor.min.css";
+
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism-tomorrow.css";
 
 export default {
   name: "editor",
 
   components: {
     editorElement,
+    PrismEditor,
+  },
+
+  data() {
+    return {
+      code: JSON.stringify(this.$store.state.theme, null, 4),
+    };
   },
 
   computed: {
-    stringifiedJSON() {
-      return JSON.stringify(this.$store.state.theme, null, 4);
-    },
     colors() {
       return this.$store.state.theme.colors;
     },
@@ -49,22 +61,28 @@ export default {
 
   methods: {
     updateInputJSON() {
-      let content = document.getElementById("JSONEditor").innerHTML;
+      let content = document
+        .getElementById("JSONEditor")
+        .getElementsByTagName("textarea")[0].value;
       this.$store.state.theme = JSON.parse(content);
     },
 
     switchEditor(pWhich) {
       if (pWhich) {
-        this.$refs.JSONEditor.style.display = "none";
+        document.getElementById("JSONEditor").style.display = "none";
         this.$refs.colorEditor.style.display = "flex";
         this.$refs.metaEditor.style.display = "flex";
         this.$store.state.discordRpc = !this.$store.state.discordRpc;
       } else {
-        this.$refs.JSONEditor.style.display = "block";
+        document.getElementById("JSONEditor").style.display = "flex";
         this.$refs.colorEditor.style.display = "none";
         this.$refs.metaEditor.style.display = "none";
         this.$store.state.discordRpc = !this.$store.state.discordRpc;
       }
+    },
+
+    highlighter(code) {
+      return highlight(code, languages.js);
     },
   },
 };
@@ -134,5 +152,9 @@ button {
 button:hover {
   background-color: #aaaaaa;
   color: #333333;
+}
+
+.prism-editor__textarea:focus {
+  outline: none;
 }
 </style>

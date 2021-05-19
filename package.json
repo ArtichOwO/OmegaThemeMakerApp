@@ -10,7 +10,6 @@
     "url": "https://github.com/ArtichOwO/OmegaThemeMakerApp/issues",
     "email": "omegaprod@protonmail.com"
   },
-
   "main": "background.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -63,5 +62,9 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "dependencies": {
+    "prismjs": "^1.23.0",
+    "vue-prism-editor": "^2.0.0-alpha.2"
   }
 }
