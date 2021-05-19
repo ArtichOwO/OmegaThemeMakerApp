@@ -89,6 +89,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap");
+
 #editorContainer {
   flex-grow: 1;
   display: flex;
@@ -106,6 +108,7 @@ export default {
   width: auto;
   flex-grow: 1;
   overflow: scroll;
+  font-family: "Fira Code", sans-serif;
 }
 
 #JSONEditor:focus {
@@ -155,6 +158,7 @@ button:hover {
 }
 
 .prism-editor__textarea:focus {
+  overflow: auto;
   outline: none;
 }
 
