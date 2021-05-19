@@ -157,4 +157,8 @@ button:hover {
 .prism-editor__textarea:focus {
   outline: none;
 }
+
+.prism-editor__line-numbers {
+  overflow: initial !important;
+}
 </style>
