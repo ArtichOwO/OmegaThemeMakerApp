@@ -8,6 +8,7 @@
       <span class="consoleLineNumber">{{ key }}</span>
       <span class="text-bold" v-html="this.status[key]"></span>
     </div>
+    <div id="snap-div"></div>
   </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
   flex-grow: 1;
   overflow: scroll;
   font-family: "Fira Code", sans-serif;
+  scroll-snap-type: y proximity;
 }
 
 .consoleElement {
@@ -45,5 +47,9 @@ export default {
 
 #statusBar a:any-link {
   color: #ffffff;
+}
+
+#snap-div {
+  scroll-snap-align: end;
 }
 </style>

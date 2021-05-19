@@ -173,8 +173,6 @@ export default createStore({
 
     addLnToStatus(state, pValue) {
       console.log(pValue);
-      let statusConsole = document.getElementById("statusBar");
-      statusConsole.scrollTop = statusConsole.scrollHeight;
       state.status[Object.keys(state.status).length] = pValue;
     },
   },
